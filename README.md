@@ -9,6 +9,10 @@ Please fill out:
 * Blog post URL:
 
 
+## Introduction
+
+In this notebook I will be running through multiple data frames that are relative to the movie industry. The purpose is to answer three distinct questions for my potential client, Microsoft. I will analyze and present the data to our client in order to show my findings and offer my advice.
+
 
 ```python
 # Your code here - remember to use markdown cells for comments as well!
@@ -34,7 +38,6 @@ os.listdir()
      'output_52_0.png',
      'CONTRIBUTING.md',
      'output_56_0.png',
-     'README1.md',
      'Mod1 - Final.pdf',
      '.ipynb_checkpoints',
      'output_32_0.png',
@@ -211,16 +214,10 @@ pd.read_csv(files_list[0])
 
 ## Notes on Files
 
-I want to merge: ?
-
 My questions: 
 - Which genres are the most profitable?
 - What month of the year has the global gross profit / box office?
 - What's the average budget spent on films over and which budget has the highest ROI on average?
-
-I'll be able to present what genre, film rating, 5 directors and month and budget that'll be the most profitable for Microsoft.
-
-Join / merge 1, 2 = g
 
 ### Columns of interest
 
@@ -1321,12 +1318,140 @@ for filename, df in DATA.items():
 
 ```python
 df_tn_budget = pd.read_csv(files_list[8])
+df_tn_budget.head(3)
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>release_date</th>
+      <th>movie</th>
+      <th>production_budget</th>
+      <th>domestic_gross</th>
+      <th>worldwide_gross</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>Dec 18, 2009</td>
+      <td>Avatar</td>
+      <td>$425,000,000</td>
+      <td>$760,507,625</td>
+      <td>$2,776,345,279</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>May 20, 2011</td>
+      <td>Pirates of the Caribbean: On Stranger Tides</td>
+      <td>$410,600,000</td>
+      <td>$241,063,875</td>
+      <td>$1,045,663,875</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>3</td>
+      <td>Jun 7, 2019</td>
+      <td>Dark Phoenix</td>
+      <td>$350,000,000</td>
+      <td>$42,762,350</td>
+      <td>$149,762,350</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
 df_imdb_genres = pd.read_csv(files_list[6])
+df_imdb_genres.head(3)
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tconst</th>
+      <th>primary_title</th>
+      <th>original_title</th>
+      <th>start_year</th>
+      <th>runtime_minutes</th>
+      <th>genres</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>tt0063540</td>
+      <td>Sunghursh</td>
+      <td>Sunghursh</td>
+      <td>2013</td>
+      <td>175.0</td>
+      <td>Action,Crime,Drama</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>tt0066787</td>
+      <td>One Day Before the Rainy Season</td>
+      <td>Ashad Ka Ek Din</td>
+      <td>2019</td>
+      <td>114.0</td>
+      <td>Biography,Drama</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>tt0069049</td>
+      <td>The Other Side of the Wind</td>
+      <td>The Other Side of the Wind</td>
+      <td>2018</td>
+      <td>122.0</td>
+      <td>Drama</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -2016,29 +2141,29 @@ all_genres
 
 
 
-    ['Mystery',
-     'Animation',
-     'Music',
-     'Musical',
-     'Family',
-     'Adventure',
-     'Horror',
-     'History',
-     'Sport',
-     'Action',
-     'Drama',
-     'Comedy',
-     'Thriller',
-     'News',
-     'Documentary',
-     'Romance',
-     'Reality-TV',
-     'Crime',
-     'Sci-Fi',
-     'Western',
-     'Biography',
+    ['Horror',
      'War',
-     'Fantasy']
+     'Action',
+     'Sport',
+     'Thriller',
+     'Family',
+     'Fantasy',
+     'Comedy',
+     'Reality-TV',
+     'Music',
+     'Sci-Fi',
+     'Biography',
+     'Romance',
+     'Musical',
+     'Animation',
+     'Adventure',
+     'Western',
+     'Documentary',
+     'News',
+     'History',
+     'Crime',
+     'Drama',
+     'Mystery']
 
 
 
@@ -2072,39 +2197,39 @@ genre_df
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Mystery</th>
-      <th>Animation</th>
-      <th>Music</th>
-      <th>Musical</th>
-      <th>Family</th>
-      <th>Adventure</th>
       <th>Horror</th>
-      <th>History</th>
-      <th>Sport</th>
-      <th>Action</th>
-      <th>...</th>
-      <th>News</th>
-      <th>Documentary</th>
-      <th>Romance</th>
-      <th>Reality-TV</th>
-      <th>Crime</th>
-      <th>Sci-Fi</th>
-      <th>Western</th>
-      <th>Biography</th>
       <th>War</th>
+      <th>Action</th>
+      <th>Sport</th>
+      <th>Thriller</th>
+      <th>Family</th>
       <th>Fantasy</th>
+      <th>Comedy</th>
+      <th>Reality-TV</th>
+      <th>Music</th>
+      <th>...</th>
+      <th>Musical</th>
+      <th>Animation</th>
+      <th>Adventure</th>
+      <th>Western</th>
+      <th>Documentary</th>
+      <th>News</th>
+      <th>History</th>
+      <th>Crime</th>
+      <th>Drama</th>
+      <th>Mystery</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2124,45 +2249,45 @@ genre_df
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2172,21 +2297,21 @@ genre_df
       <td>3</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2196,21 +2321,21 @@ genre_df
       <td>4</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2242,6 +2367,7 @@ genre_df
     </tr>
     <tr>
       <td>3808</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2249,7 +2375,6 @@ genre_df
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
@@ -2261,7 +2386,7 @@ genre_df
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
@@ -2285,7 +2410,7 @@ genre_df
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
@@ -2297,7 +2422,7 @@ genre_df
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
@@ -2309,18 +2434,18 @@ genre_df
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
       <td>3813</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2330,7 +2455,7 @@ genre_df
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2338,13 +2463,13 @@ genre_df
     </tr>
     <tr>
       <td>3814</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2357,7 +2482,7 @@ genre_df
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -2406,16 +2531,16 @@ df
       <th>original_title</th>
       <th>start_year</th>
       <th>...</th>
-      <th>News</th>
-      <th>Documentary</th>
-      <th>Romance</th>
-      <th>Reality-TV</th>
-      <th>Crime</th>
-      <th>Sci-Fi</th>
+      <th>Musical</th>
+      <th>Animation</th>
+      <th>Adventure</th>
       <th>Western</th>
-      <th>Biography</th>
-      <th>War</th>
-      <th>Fantasy</th>
+      <th>Documentary</th>
+      <th>News</th>
+      <th>History</th>
+      <th>Crime</th>
+      <th>Drama</th>
+      <th>Mystery</th>
     </tr>
   </thead>
   <tbody>
@@ -2458,14 +2583,14 @@ df
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
       <td>2</td>
@@ -2482,10 +2607,10 @@ df
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2506,10 +2631,10 @@ df
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2530,10 +2655,10 @@ df
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2584,7 +2709,7 @@ df
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
@@ -2608,7 +2733,7 @@ df
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
@@ -2632,7 +2757,7 @@ df
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
@@ -2653,7 +2778,7 @@ df
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -2680,7 +2805,7 @@ df
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -2712,29 +2837,29 @@ list(df.columns.values)
      'runtime_minutes',
      'genres',
      'Profits',
-     'Mystery',
-     'Animation',
-     'Music',
-     'Musical',
-     'Family',
-     'Adventure',
      'Horror',
-     'History',
-     'Sport',
-     'Action',
-     'Drama',
-     'Comedy',
-     'Thriller',
-     'News',
-     'Documentary',
-     'Romance',
-     'Reality-TV',
-     'Crime',
-     'Sci-Fi',
-     'Western',
-     'Biography',
      'War',
-     'Fantasy']
+     'Action',
+     'Sport',
+     'Thriller',
+     'Family',
+     'Fantasy',
+     'Comedy',
+     'Reality-TV',
+     'Music',
+     'Sci-Fi',
+     'Biography',
+     'Romance',
+     'Musical',
+     'Animation',
+     'Adventure',
+     'Western',
+     'Documentary',
+     'News',
+     'History',
+     'Crime',
+     'Drama',
+     'Mystery']
 
 
 
@@ -2750,7 +2875,7 @@ genre_dfs.keys()
 
 
 
-    dict_keys(['Mystery', 'Animation', 'Music', 'Musical', 'Family', 'Adventure', 'Horror', 'History', 'Sport', 'Action', 'Drama', 'Comedy', 'Thriller', 'News', 'Documentary', 'Romance', 'Reality-TV', 'Crime', 'Sci-Fi', 'Western', 'Biography', 'War', 'Fantasy'])
+    dict_keys(['Horror', 'War', 'Action', 'Sport', 'Thriller', 'Family', 'Fantasy', 'Comedy', 'Reality-TV', 'Music', 'Sci-Fi', 'Biography', 'Romance', 'Musical', 'Animation', 'Adventure', 'Western', 'Documentary', 'News', 'History', 'Crime', 'Drama', 'Mystery'])
 
 
 
@@ -2762,7 +2887,7 @@ profits = ['Profits']
 plot_dict = {}
 
 for col in profits:
-    #thi is where I created the dictionary 
+    #this is where I created the dictionary 
     plot_dict[col] = {}
     #for every genre, I filled in every column with the genre df's and pulling it out with the column
     for genre,genre_df in genre_dfs.items():
@@ -2779,25 +2904,104 @@ plot_dict.keys()
 
 
 ```python
-#created my new plot
-
-revenue = pd.DataFrame.from_dict(plot_dict['Profits'])
-
-new_figure = plt.figure(figsize=(20,15))
-ax = plt.axes()
-
-sns.barplot(data=revenue,
-            orient='h',
-            ci=68).set_title('Most profitable Genres',
-            fontsize = 30)
-
-ax.set(xlabel = 'Profits', ylabel = 'Movie Genre')
-plt.xticks(rotation = 45)
-ax.xaxis.set_major_formatter(FuncFormatter(reformat_large_tick_values));
+# plt.style.available
 ```
 
 
-![png](output_32_0.png)
+
+
+    ['seaborn-dark',
+     'seaborn-darkgrid',
+     'seaborn-ticks',
+     'fivethirtyeight',
+     'seaborn-whitegrid',
+     'classic',
+     '_classic_test',
+     'fast',
+     'seaborn-talk',
+     'seaborn-dark-palette',
+     'seaborn-bright',
+     'seaborn-pastel',
+     'grayscale',
+     'seaborn-notebook',
+     'ggplot',
+     'seaborn-colorblind',
+     'seaborn-muted',
+     'seaborn',
+     'Solarize_Light2',
+     'seaborn-paper',
+     'bmh',
+     'tableau-colorblind10',
+     'seaborn-white',
+     'dark_background',
+     'seaborn-poster',
+     'seaborn-deep']
+
+
+
+
+```python
+# #created my new plot
+# for style in plt.style.available:
+
+#     with plt.style.context(style):
+
+
+#         revenue = pd.DataFrame.from_dict(plot_dict['Profits'])
+
+#         new_figure = plt.figure(figsize=(20,15))
+#         ax = plt.axes()
+
+#         sns.barplot(data=revenue,
+#                     orient='h',
+#                     ci=68).set_title(f'{style}',#'Most profitable Genres',
+#                     fontsize = 30)
+
+#         ax.set(xlabel = 'Profits', ylabel = 'Movie Genre')
+#         plt.xticks(rotation = 45)
+#         ax.xaxis.set_major_formatter(FuncFormatter(reformat_large_tick_values));
+```
+
+
+```python
+#created my new plot
+#get the mean for profits
+revenue = pd.DataFrame.from_dict(plot_dict['Profits'])
+#put this into descending order
+genre_order = revenue.mean().sort_values(ascending = False).index
+genre_order
+```
+
+
+
+
+    Index(['Animation', 'Adventure', 'Musical', 'Sci-Fi', 'Fantasy', 'Action',
+           'Family', 'Music', 'Comedy', 'Thriller', 'Mystery', 'Sport', 'Horror',
+           'Biography', 'History', 'Romance', 'Documentary', 'Crime', 'Drama',
+           'War', 'Western', 'News', 'Reality-TV'],
+          dtype='object')
+
+
+
+
+```python
+with plt.style.context('seaborn-poster'):
+
+    new_figure = plt.figure(figsize=(20,15))
+    ax = plt.axes()
+
+    sns.barplot(data=revenue, order = genre_order,
+                orient='h',
+                ci=68).set_title('Most profitable Genres',
+                fontsize = 30)
+
+    ax.set(xlabel = 'Profits', ylabel = 'Movie Genre')
+    plt.xticks(rotation = 45)
+    ax.xaxis.set_major_formatter(FuncFormatter(reformat_large_tick_values));
+```
+
+
+![png](output_37_0.png)
 
 
 ## Budget - Done
@@ -2818,7 +3022,7 @@ df_tn_budget['Profits'] = (df_tn_budget['worldwide_gross'] - df_tn_budget['produ
 
 
 ```python
-#Organizing from highest profits to loowest profits
+#Organizing from highest profits to lowest profits
 df_tn_budget.sort_values(by = ['Profits'], ascending = False, inplace = True)
 df_tn_budget.head(100)
 ```
@@ -3193,6 +3397,32 @@ def reformat_large_tick_values(tick_val, pos):
 
 
 ```python
+import matplotlib
+matplotlib.__version__
+```
+
+
+
+
+    '3.1.1'
+
+
+
+
+```python
+# new_figure = plt.figure(figsize=(20,10))
+# ax = plt.axes()
+# sns.barplot(data = df_tn_budget[:250], y= 'production_budget',
+#             x = 'Profits',
+#             ax=ax).set_title('Profits vs. Budget', fontsize = 25)
+# # plt.xticks(rotation = 90)
+# ax.set(xlabel = 'Production Budget')
+# ax.xaxis.set_major_formatter(FuncFormatter(reformat_large_tick_values))
+# ax.yaxis.set_major_formatter(FuncFormatter(reformat_large_tick_values));
+```
+
+
+```python
 new_figure = plt.figure(figsize=(20,10))
 ax = plt.axes()
 sns.barplot(x= df_tn_budget['production_budget'][:250],
@@ -3200,12 +3430,13 @@ sns.barplot(x= df_tn_budget['production_budget'][:250],
             ax=ax).set_title('Profits vs. Budget', fontsize = 25)
 plt.xticks(rotation = 90)
 ax.set(xlabel = 'Production Budget')
+# ax.xaxis.set_major_formatter(FuncFormatter(reformat_large_tick_values))
 ax.yaxis.set_major_formatter(FuncFormatter(reformat_large_tick_values));
 # sns.regression(x= df_tn_budget['production_budget'][:250],y = df_tn_budget['Profits'][:250],ax=ax);
 ```
 
 
-![png](output_41_0.png)
+![png](output_48_0.png)
 
 
 
@@ -3220,7 +3451,7 @@ ax.yaxis.set_major_formatter(FuncFormatter(reformat_large_tick_values));
 ```
 
 
-![png](output_42_0.png)
+![png](output_49_0.png)
 
 
 
@@ -3251,7 +3482,7 @@ ax.xaxis.set_major_formatter(FuncFormatter(reformat_large_tick_values));
 ```
 
 
-![png](output_44_0.png)
+![png](output_51_0.png)
 
 
 In the above graph we're able to look at the top 100 highest grossing movies of all time compared to their production budget. The production budget falls within the top 100. My recommendation to Microsoft, is to expect to pay $31,587,757 to yield the highest possibility of a profit.
@@ -3649,7 +3880,7 @@ plt.ylabel('Number of Movies');
 ```
 
 
-![png](output_52_0.png)
+![png](output_59_0.png)
 
 
 
@@ -3682,12 +3913,16 @@ ax.yaxis.set_major_formatter(FuncFormatter(reformat_large_tick_values));
 ```
 
 
-![png](output_56_0.png)
+![png](output_63_0.png)
 
 
-There's a lot to take away from the above information. We managed to find solutions for the most profitable genre, month and budget. I was also able to look at the distribution of budgets spent and months movies were most commonly released on. After viewing this data we found there was a competitive edge to release movies in the summer.
+## Conclusions
 
-We also know now that we should expect to budget roughly $31MM in order to receive at least the average Profits (which are higher than the budget). We also know that we should focus our movies on adventure, animation and musicals. Think of movie studios like Disney, they hit all these markers with almost every movie they make, no wonder they're so successful.
+There's a lot to take away from the above information. After looking at the distribution of budgets spent and months movies were most commonly released on, I'd recommend After releasing a film over the summer (May, June, July) in order to have the highest possible return.
+
+I'd also recommend that Microsoft should expect to budget roughly $31MM in order to receive at least the average Profits (which are higher than the budget). 
+
+My final recommendation is to have Microsoft focus within the adventure, animation and musical genres. These genres were the most profitable amongst the other genres. Think of movie studios like Disney, they hit all these markers with almost every movie they make, no wonder they're so successful.
 
 
 ```python
